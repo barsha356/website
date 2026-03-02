@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Personal Website</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{ background:#fff; color:#333; }
+
+/* NAV */
+header{
+    background:#0d6efd;
+    padding:15px 60px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+nav h2, nav a{ color:white; text-decoration:none; }
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+.profile-pic{
+    width:160px;
+    border-radius:50%;
+    border:5px solid #0d6efd;
+}
+.hero span{ color:#0d6efd; }
+.typing{ margin-top:10px; font-size:1.2rem; height:30px; }
+
+/* SECTION */
+.section{
+    padding:60px 80px;
+    text-align:center;
+}
+.blue-bg{ background:#f0f6ff; }
+.section h2{
+    color:#0d6efd;
+    margin-bottom:20px;
+}
+
+/* HOBBIES */
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+.card{
+    background:white;
+    padding:20px;
+    width:230px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.card button{
+    margin-top:10px;
+    padding:8px 15px;
+    border:none;
+    background:#0d6efd;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+.modal-content{
+    background:white;
+    padding:30px;
+    width:90%;
+    max-width:500px;
+    border-radius:12px;
+    position:relative;
+    text-align:left;
+}
+.close{
+    position:absolute;
+    top:10px; right:15px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* IMAGES */
+.designs img,
+.gallery img,
+.family-img{
+    width:100%;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#0d6efd;
+    color:white;
+    border-radius:25px;
+    text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+    background:#0d6efd;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+@media(max-width:768px){
+    .section{ padding:40px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h2>Barsha Pokhrel</h2>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<img src="image/photo.jpg" class="profile-pic">
+<h1>Hello, Welcome <span>to the World of</span></h1>
+<div class="typing" id="typing"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+<h2>About Her</h2>
+<p>
+She is a kind-hearted girl with a soft nature and a warm smile, someone who believes in goodness even when the world feels heavy. Coming from a simple family, she has learned the true value of love, respect, and hard work from an early age. Her roots keep her grounded, yet her dreams reach far beyond what she sees around her. She wants to do something big in life, not for fame alone, but to prove to herself and others that sincerity and determination can change destinies. Her simplicity is her strength, not a limitation. With hope in her eyes and courage in her soul, she walks forward, determined to create a meaningful future while never forgetting where she came from.
+</p>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies" class="section blue-bg">
+<h2>Her Hobbies & Interests</h2>
+<div class="cards">
+    
+    
+    <div class="card">🎶 Music  
+        <button onclick="openModal('music')">View More</button>
+    </div>
+
+    <div class="card">🎨 Graphic Design
+        <button onclick="openModal('design')">View More</button>
+    </div>
+
+    <div class="card">📚 Exploring
+        <button onclick="openModal('growth')">View More</button>
+    </div>
+
+    <div class="card">💻 Programming
+        <button onclick="openModal('coding')">View More</button>
+    </div>
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="section">
+<h2>My Journey</h2>
+<p>
+My journey began in high school where dreams were simple and hearts were pure.
+As I stepped into bachelor life, challenges increased but so did my strength.
+Each phase shaped my mindset, patience, and vision for the future.
+</p>
+</section>
+
+<!-- FAMILY -->
+<section id="family" class="section blue-bg">
+<h2>My Family</h2>
+<p>
+My family is my greatest blessing. Their love, sacrifices, and constant belief
+in me give me strength to move forward in every situation of life.
+</p>
+<img src="images/family.jpg" class="family-img">
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+<h2>Gallery</h2>
+<div class="gallery">
+    <img src="images/friend1.jpg">
+    <img src="images/friend2.jpg">
+    <img src="images/highschool.jpg">
+    <img src="images/family2.jpg">
+</div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="section blue-bg">
+<h2>My Resume</h2>
+<a href="resume.pdf" download class="btn">Download Resume</a>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<div id="modal-body"></div>
+</div>
+</div>
+
+<footer>
+<p>© 2026 | Made with 💙 by Me</p>
+</footer>
+
+<script>
+/* TYPING */
+const texts=["A dreamer ✨","A learner 📘","A future achiever 💙"];
+let t=0,c=0,typing=document.getElementById("typing");
+
+function type(){
+    if(c<texts[t].length){
+        typing.textContent+=texts[t][c++];
+        setTimeout(type,100);
+    }else setTimeout(erase,2000);
+}
+function erase(){
+    if(c>0){
+        typing.textContent=texts[t].substring(0,--c);
+        setTimeout(erase,60);
+    }else{
+        t=(t+1)%texts.length;
+        setTimeout(type,500);
+    }
+}
+type();
+
+/* MODAL */
+function openModal(type){
+    const body=document.getElementById("modal-body");
+    if(type==="design"){
+        body.innerHTML=`
+        <h3>Graphic Design</h3>
+        <p>I express emotions and ideas through visual creativity.</p>
+        <div class="designs">
+            <img src="designs/design1.jpg">
+            <img src="designs/design2.jpg">
+        </div>`;
+    }
+    if(type==="coding"){
+        body.innerHTML="<h3>Programming</h3><p>I enjoy learning logic and problem solving step by step.</p>";
+    }
+    if(type==="music"){
+        body.innerHTML="<h3>Music</h3><p>Music heals, motivates, and keeps me calm.</p>";
+    }
+    if(type==="growth"){
+        body.innerHTML="<h3>Self Growth</h3><p>I believe in improving myself emotionally and mentally.</p>";
+    }
+    document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+</html>
