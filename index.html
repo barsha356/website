@@ -105,13 +105,172 @@ nav h2, nav a{ color:white; text-decoration:none; }
 }
 
 /* IMAGES */
-.designs img,
-.gallery img,
-.family-img{
-    width:100%;
-    border-radius:10px;
-    margin-top:10px;
+
+.graphic-design-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f4f4f4; 
 }
+
+.designs {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.designs img {
+  height: 200px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.designs img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+#fullscreenOverlay {
+  display: none; 
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  backdrop-filter: blur(5px); 
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 80%;
+  max-height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+}
+
+#fullscreenImage {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: 8px;
+  display: block;
+}
+
+#closeBtn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  color: #333;
+  font-size: 30px;
+  font-weight: bold;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.gallery {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.view-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+#galleryOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.gallery-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.gallery-full img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#closeGallery,
+#closeImage {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+#imageOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1100;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+#imageOverlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+  .resume-box{
+  max-width:600px;
+  margin:auto;
+}
+.resume-box a{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 25px;
+  background:#0d6efd;
+  color:white;
+  border-radius:25px;
+  text-decoration:none;
+}
+
 
 /* BUTTON */
 .btn{
@@ -156,7 +315,7 @@ footer{
 <section class="section">
 <h2>About Her</h2>
 <p>
-She is a kind-hearted girl with a soft nature and a warm smile, someone who believes in goodness even when the world feels heavy. Coming from a simple family, she has learned the true value of love, respect, and hard work from an early age. Her roots keep her grounded, yet her dreams reach far beyond what she sees around her. She wants to do something big in life, not for fame alone, but to prove to herself and others that sincerity and determination can change destinies. Her simplicity is her strength, not a limitation. With hope in her eyes and courage in her soul, she walks forward, determined to create a meaningful future while never forgetting where she came from.
+She is a kind-hearted girl with a soft nature and a warm smile, someone who believes in goodness even when the world feels heavy. Coming from a simple family, she has learned the true value of love, respect, and hard work from an early age. She wants to do something big in life, not for fame alone, but to prove to herself and others that sincerity and determination can change destinies. With hope in her eyes and courage in her soul, she walks forward, determined to create a meaningful future while never forgetting where she came from✨.
 </p>
 </section>
 
@@ -166,59 +325,88 @@ She is a kind-hearted girl with a soft nature and a warm smile, someone who beli
 <div class="cards">
     
     
-    <div class="card">🎶 Music  
-        <button onclick="openModal('music')">View More</button>
+    <div class="card">🎶 Music and Novels 
+        <button onclick="openModal('music')">You better read</button>
     </div>
 
     <div class="card">🎨 Graphic Design
-        <button onclick="openModal('design')">View More</button>
+        <button onclick="openModal('design')">You better read</button>
     </div>
 
     <div class="card">📚 Exploring
-        <button onclick="openModal('growth')">View More</button>
+        <button onclick="openModal('growth')">You better read</button>
     </div>
 
     <div class="card">💻 Programming
-        <button onclick="openModal('coding')">View More</button>
+        <button onclick="openModal('coding')">You better read</button>
     </div>
 </div>
-</section>
-
-<!-- JOURNEY -->
-<section id="journey" class="section">
-<h2>My Journey</h2>
-<p>
-My journey began in high school where dreams were simple and hearts were pure.
-As I stepped into bachelor life, challenges increased but so did my strength.
-Each phase shaped my mindset, patience, and vision for the future.
-</p>
-</section>
-
-<!-- FAMILY -->
-<section id="family" class="section blue-bg">
-<h2>My Family</h2>
-<p>
-My family is my greatest blessing. Their love, sacrifices, and constant belief
-in me give me strength to move forward in every situation of life.
-</p>
-<img src="images/family.jpg" class="family-img">
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" class="section">
-<h2>Gallery</h2>
-<div class="gallery">
-    <img src="images/friend1.jpg">
-    <img src="images/friend2.jpg">
-    <img src="images/highschool.jpg">
-    <img src="images/family2.jpg">
-</div>
+  <h2>Gallery</h2>
+
+  <div class="gallery">
+    <img src="image/family1.jpg" class="gallery-img">
+    <img src="image/family2.jpg" class="gallery-img">
+   
+    <img src="image/family3.jpg" class="gallery-img">
+  </div>
+
+  <button class="view-btn" id="openGallery">View Full Collection</button>
 </section>
 
+<div id="galleryOverlay">
+  <span id="closeGallery">&times;</span>
+  <div class="gallery-full">
+    <img src="image/friends1.jpg" class="full-img">
+    <img src="image/friend2.jpg" class="full-img">
+    <img src="image/friend3.jpg" class="full-img">
+     <img src="image/family1.jpg" class="full-img">
+    <img src="image/family2.jpg" class="full-img">
+   
+    <img src="image/family3.jpg" class="full-img">
+    <img src="image/friend4.jpg" class="full-img">
+    <img src="image/friend5.jpg" class="full-img">
+  </div>
+</div>
+
+<div id="imageOverlay">
+  <span id="closeImage">&times;</span>
+  <img id="overlayImage">
+</div>
+
+<script>
+  const openGallery = document.getElementById("openGallery");
+  const galleryOverlay = document.getElementById("galleryOverlay");
+  const closeGallery = document.getElementById("closeGallery");
+
+  const fullImages = document.querySelectorAll(".full-img");
+  const imageOverlay = document.getElementById("imageOverlay");
+  const overlayImage = document.getElementById("overlayImage");
+  const closeImage = document.getElementById("closeImage");
+
+  openGallery.onclick = () => galleryOverlay.style.display = "block";
+  closeGallery.onclick = () => galleryOverlay.style.display = "none";
+
+  fullImages.forEach(img => {
+    img.onclick = () => {
+      imageOverlay.style.display = "flex";
+      overlayImage.src = img.src;
+    };
+  });
+
+  closeImage.onclick = () => imageOverlay.style.display = "none";
+</script>
+
 <!-- RESUME -->
-<section id="resume" class="section blue-bg">
-<h2>My Resume</h2>
-<a href="resume.pdf" download class="btn">Download Resume</a>
+<section class="section blue-bg">
+<h2>Resume</h2>
+<div class="resume-box">
+
+<a href="resume.pdf.pdf" download>View</a>
+</div>
 </section>
 
 <!-- MODAL -->
@@ -230,7 +418,7 @@ in me give me strength to move forward in every situation of life.
 </div>
 
 <footer>
-<p>© 2026 | Made with 💙 by Me</p>
+<p>© 2026 | Made with 💙 by Her</p>
 </footer>
 
 <script>
@@ -259,22 +447,73 @@ type();
 function openModal(type){
     const body=document.getElementById("modal-body");
     if(type==="design"){
-        body.innerHTML=`
-        <h3>Graphic Design</h3>
-        <p>I express emotions and ideas through visual creativity.</p>
-        <div class="designs">
-            <img src="designs/design1.jpg">
-            <img src="designs/design2.jpg">
-        </div>`;
+       body.innerHTML = `
+   <section class="graphic-design-section">
+  <h3>Graphic Design</h3>
+  <p class="description">
+    Graphic design is my way of expressing creativity and bringing ideas to life. I enjoy experimenting with colors, shapes, and layouts to create designs that tell a story. Each project teaches me patience, attention to detail, and the joy of turning imagination into something visually meaningful.<p> HERE ARE SOME OF MY DESIGNS. </p>
+  </p>
+
+  <div class="designs-container">
+    <div class="designs">
+      <img src="designs/design1.jpg.jpg" alt="Design 1" class="clickable">
+      <img src="designs/design2.jpg.jpeg" alt="Design 2" class="clickable">
+      <img src="designs/design3.jpg.jpeg" alt="Design 3" class="clickable">
+       <img src="designs/design4.jpg" alt="Design 4" class="clickable">
+      <img src="designs/design5.jpg" alt="Design 5" class="clickable">
+      <img src="designs/design6.jpg" alt="Design 6" class="clickable">
+       <img src="designs/design7.jpg" alt="Design 7" class="clickable">
+     
+      <img src="designs/design9.jpg" alt="Design 9" class="clickable">
+    </div>
+  </div>
+
+  <div id="fullscreenOverlay" class="modal">
+    <div class="modal-content">
+      <span id="closeBtn">&times;</span>
+      <img id="fullscreenImage" src="">
+    </div>
+  </div>
+</section>
+  `;
+
+  
+  const clickableImages = document.querySelectorAll('.clickable');
+const overlay = document.getElementById('fullscreenOverlay');
+const overlayImg = document.getElementById('fullscreenImage');
+const closeBtn = document.getElementById('closeBtn');
+
+clickableImages.forEach(img => {
+  img.addEventListener('click', () => {
+    overlay.style.display = 'flex';
+    overlayImg.src = img.src;
+    // Prevent scrolling while viewing image
+    document.body.style.overflow = 'hidden'; 
+  });
+});
+
+const closeModal = () => {
+  overlay.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restore scrolling
+};
+
+closeBtn.addEventListener('click', closeModal);
+
+// Close if clicking anywhere on the dark background
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) {
+    closeModal();
+  }
+});
     }
     if(type==="coding"){
-        body.innerHTML="<h3>Programming</h3><p>I enjoy learning logic and problem solving step by step.</p>";
+        body.innerHTML="<h3>Programming</h3><p>Programming is a quiet passion of mine. I enjoy the process of learning, making mistakes, and gradually turning ideas into working code. Every challenge teaches me patience and reinforces my belief that with consistency, I can create, grow, and achieve something meaningful💻.</p>";
     }
     if(type==="music"){
-        body.innerHTML="<h3>Music</h3><p>Music heals, motivates, and keeps me calm.</p>";
+        body.innerHTML="<h3>Music and Novels</h3><p>Music and novels are my safe place. The soulful voice of Arijit Singh feels like an echo of my heart, and Tum Hi Ho holds emotions I cannot express in words. In novels, I find quiet healing through the stories of Mr. Sigrace Pokhrel, especially Mero Adhuro Prem, which reflects love left incomplete. Through music and stories, I find peace, depth, and myself💙.</p>";
     }
     if(type==="growth"){
-        body.innerHTML="<h3>Self Growth</h3><p>I believe in improving myself emotionally and mentally.</p>";
+        body.innerHTML="<h3>Exploring</h3><p>Exploring is my way of feeling free. I love discovering quiet places, new paths, and moments that teach me something new. Every exploration adds a memory and helps me grow from within🌸.</p>";
     }
     document.getElementById("modal").style.display="flex";
 }
